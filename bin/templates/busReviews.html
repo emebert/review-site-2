@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Bus Stop Reviews</title>
+<link rel="stylesheet" type="text/css" href="/reviews-site.css"></link>
+</head>
+<body class="site-body">
+<header>
+	<h1>Bus Stop Review</h1>
+	<h2>all reviews</h2>
+</header>
+
+<div th:each="p: ${stopsAsCollection}" class="title-content">
+	<h2><a th:href="@{/reviews/(id=${p.id})}"
+	th:text="${stops.getTitle()}"></a></h2>
+	<p th:text:"${stops.getReviewCategory()}" class="busstop-entry-content"></p>
+</div>
+
+</body>
+	<h1>Bus stop as collection:</h1>
+	<p th:text="${stopsAsCollection}" />
+	<ul>
+		<li th:each="p: ${stopsAsCollection}" th:text="${p.id} + ',' + ${p.title} + ',' + ${p.imgURL} + ',' + ${p.reviewCategory} + ',' + ${p.season}" />
+	</ul>
+	
+	<h1>Bus stops as map:</h1>
+	<p th:text="'Raw: ' + ${stopsAsMap}" />
+		<ul>
+		<li th:each="stopEntry: ${stopsAsMap}" th:text="'Entry is ' + ${stopEntry} + '/' + ${p.id} + ',' + ${p.title} + ',' + ${p.imgURL} + ',' + ${p.reviewCategory} + ',' + ${p.season}" />
+	</ul>
+	
+		<h1>Bus stops as collection with iteration status:</h1>
+	<p th:text="'Raw: ' + ${stopsAsCollection}" />
+</body>
+</html>

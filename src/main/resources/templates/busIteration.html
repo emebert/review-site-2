@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Bus Iteration</title>
+</head>
+<body>
+	<h1>Bus stop as collection:</h1>
+	<p th:text="${stopsAsCollection}" />
+	<ul>
+		<li th:each="p: ${stopsAsCollection}" th:text="${getId()} + ',' + ${getTitle()} + ',' + ${getImgURL()} + ',' + ${getReviewCategory()} + ',' + ${getSeason()}" />
+	</ul>
+	
+	<h1>Bus stops as map:</h1>
+	<p th:text="'Raw: ' + ${stopsAsMap}" />
+		<ul>
+		<li th:each="stopEntry: ${stopsAsMap}" th:text="'Entry is ' + ${stopEntry} + '.' + ${getId()} + ',' + ${getTitle()} + ',' + ${getImgURL()} + ',' + ${getReviewCategory()} + ',' + ${getSeason()}" />
+	</ul>
+	
+	
+</body>
+</html>
